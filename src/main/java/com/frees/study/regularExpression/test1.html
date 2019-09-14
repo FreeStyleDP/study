@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<script type="text/javascript">
+    window.onload = function () {
+        var str = '';
+        alert(1);
+
+        var patt = new RegExp("S\\d{6}.{6}");
+        var patt1 = /S\d{6}.{6}/g;
+        alert(patt.test("S000000ed211e"));
+        alert(patt1.test("S000000ed211e S000000ed221e S000000ed231e"));
+
+        alert(patt.exec("S000000ed211e"));
+
+        alert("S000000ed211e S000000ed221e S000000ed231e".match(patt1));
+       var resutl = patt1.exec("S000000ed211e S000000ed221e S000000ed231e");
+       alert(resutl.length);
+       for (i = 0 ; i< resutl.length ; i++){
+           console.log(resutl[i]);
+       }
+
+    }
+</script>
+</body>
+</html>
