@@ -7,12 +7,11 @@ public class ObserverPattern {
 
     public static void main(String[] args) {
 
-
         WeatherData weatherData = new WeatherData();
 
         CurrentCoditionDisplay currentCoditionDisplay = new CurrentCoditionDisplay(weatherData);
         StatisticsDisplay statisticsDisplay = new StatisticsDisplay(weatherData);
-        weatherData.setMeasurements("1","2","3");
+        weatherData.setMeasurements("1", "2", "3");
 
     }
 
@@ -48,30 +47,31 @@ class WeatherData extends Observable {
         this.pressure = pressure;
     }
 
-    public void setMeasurements(String temperature,String pressure,String humidity){
+    public void setMeasurements(String temperature, String pressure, String humidity) {
         this.pressure = pressure;
         this.humidity = humidity;
         this.temperature = temperature;
         meansurementsChanged();
     }
 
-    public void meansurementsChanged(){
+    public void meansurementsChanged() {
         setChanged();
         notifyObservers();
     }
 }
 
-class CurrentCoditionDisplay implements Observer{
+class CurrentCoditionDisplay implements Observer {
 
     private Observable observable;
-    public CurrentCoditionDisplay(Observable observable){
+
+    public CurrentCoditionDisplay(Observable observable) {
         this.observable = observable;
         observable.addObserver(this);
     }
-    @Override
-    public void update(Observable o, Object arg) {
-        if (o instanceof  WeatherData){
-            WeatherData weatherData = (WeatherData) o;
+
+    @Override public void update(Observable o, Object arg) {
+        if (o instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData)o;
             String humidity = weatherData.getHumidity();
             String pressure = weatherData.getPressure();
             String temperature = weatherData.getTemperature();
@@ -80,18 +80,19 @@ class CurrentCoditionDisplay implements Observer{
     }
 }
 
-class StatisticsDisplay implements Observer{
+class StatisticsDisplay implements Observer {
 
     private Observable observable;
-    public StatisticsDisplay(Observable observable){
+
+    public StatisticsDisplay(Observable observable) {
         this.observable = observable;
         observable.addObserver(this);
     }
-    @Override
-    public void update(Observable o, Object arg) {
+
+    @Override public void update(Observable o, Object arg) {
         System.out.println(1);
-        if (o instanceof  WeatherData){
-            WeatherData weatherData = (WeatherData) o;
+        if (o instanceof WeatherData) {
+            WeatherData weatherData = (WeatherData)o;
             String humidity = weatherData.getHumidity();
             String pressure = weatherData.getPressure();
             String temperature = weatherData.getTemperature();
