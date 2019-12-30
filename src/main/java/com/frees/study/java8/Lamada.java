@@ -1,18 +1,32 @@
 package com.frees.study.java8;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
 import org.junit.Test;
 
 import java.util.Arrays;
 import java.util.Comparator;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+
+import static org.junit.Assert.*;
 
 /**
  * @author dengping
  * @date 2019/10/15 11:00
  */
 public class Lamada {
+
+    @Test
+    public void whenCheckIfPresent() {
+        User user =new User("john@gmail.com","1234");
+        Optional<User> opt =Optional.ofNullable(user);
+        opt.ifPresent( u -> assertEquals(user.getEmail(), u.getEmail()  ));
+
+//        user = null;
+    }
 
     @Test
     public void test2(){
@@ -44,6 +58,13 @@ public class Lamada {
 
     public interface Converter<T1, T2> {
         void convert(int i);
+    }
+
+    @Data
+    @AllArgsConstructor
+    public class User{
+        private String email;
+        private String name;
     }
 
 }
