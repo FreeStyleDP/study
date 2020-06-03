@@ -47,12 +47,12 @@ public class N4_ArraysCollectionsObjects {
         String s = "1";
         String s1 = null;
         String s2 = null;
-//        System.out.println(s.equals(s1));
-//        System.out.println(Objects.equals(s1, s2));
-//        System.out.println((null instanceof String));
         System.out.println(s.equals(s1));
-        System.out.println(((String)null));
+        System.out.println(((String) null));
         Object o = null;
-        System.out.println(((String)o));
+        System.out.println(((String) o));
+
+        String s3 = "111";
+        System.out.println(s3.indexOf("_"));
     }
 }
